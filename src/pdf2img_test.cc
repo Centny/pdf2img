@@ -13,16 +13,16 @@ unsigned long FPDF_PrintBitmapStride(FPDF_DOCUMENT doc, FPDF_PAGE page, int page
     raw.height = FPDFBitmap_GetHeight(bitmap);
     raw.stride = FPDFBitmap_GetStride(bitmap);
     raw.data = (unsigned char *)FPDFBitmap_GetBuffer(bitmap);
-    filepath[sprintf(filepath, "/tmp/pdf-%d.jpg", pageIndex)] = 0;
+    filepath[sprintf(filepath, "/tmp/pdf1-%d.jpg", pageIndex)] = 0;
     FPDF_WriteJpegFile(filepath, 30, &raw);
-    if (pageIndex >= 4)
+    if (pageIndex == 30)
     {
         FPDF_TrimRawBitmap(bitmap, &raw, 0);
         raw.data = (unsigned char *)FPDFBitmap_GetBuffer(bitmap);
-        filepath[sprintf(filepath, "/tmp/pdf-%d-2.jpg", pageIndex)] = 0;
+        filepath[sprintf(filepath, "/tmp/pdf0-%d.jpg", pageIndex)] = 0;
         FPDF_WriteJpegFile(filepath, 30, &raw);
     }
-    if (pageIndex > 13)
+    if (pageIndex > 30)
     {
         return 1;
     }

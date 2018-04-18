@@ -135,7 +135,7 @@ int FPDF_TrimRawBitmap(FPDF_BITMAP bitmap, RawBitmap *input, RawBitmap **output)
     {
         for (size_t y = 0; y < input->height; y++)
         {
-            cs[input->data[y * input->width + x] / 26]++;
+            cs[input->data[y * input->stride + x] / 26]++;
         }
     }
     int max = -1, second = -1;
@@ -156,8 +156,9 @@ int FPDF_TrimRawBitmap(FPDF_BITMAP bitmap, RawBitmap *input, RawBitmap **output)
     }
     float rateThreshold = ((float)cs[second]) / ((float)input->width * input->height);
     unsigned char valThreshold = 50;
-    int scanMax = 2;
-    std::list<FPDF_Line *> lines;
+    //
+    int scanMax = 3;
+    std::map<size_t, FPDF_Line *> lines;
     for (size_t y = scanMax; y < input->height; y++)
     {
         double hited = 0;
@@ -165,7 +166,7 @@ int FPDF_TrimRawBitmap(FPDF_BITMAP bitmap, RawBitmap *input, RawBitmap **output)
         {
             for (int i = 1; i <= scanMax; i++)
             {
-                int val = input->data[y * input->width + x] - input->data[(y - i) * input->width + x];
+                int val = input->data[y * input->stride + x] - input->data[(y - i) * input->stride + x];
                 if (abs(val) > valThreshold)
                 {
                     hited++;
@@ -173,55 +174,126 @@ int FPDF_TrimRawBitmap(FPDF_BITMAP bitmap, RawBitmap *input, RawBitmap **output)
                 }
             }
         }
-        double xval = hited / ((double)input->width);
-        if (xval < rateThreshold)
+        if (hited / ((double)input->width) < rateThreshold)
         {
             continue;
         }
         FPDF_Line *line = (FPDF_Line *)malloc(sizeof(FPDF_Line));
         line->y0 = y;
         line->y1 = y;
-        for (size_t x = 1; x < input->width; x++)
+        line->x0 = input->width - 1;
+        line->x1 = 0;
+        for (size_t leftx = scanMax; leftx < input->width; leftx++)
         {
-            hited = 0;
+            int matched = 0;
             for (int i = 1; i <= scanMax; i++)
             {
-                int val = input->data[y * input->width + x] - input->data[y * input->width + x - 1];
+                int val = input->data[y * input->stride + leftx] - input->data[y * input->stride + leftx - i];
                 if (abs(val) > valThreshold)
                 {
-                    hited++;
+                    matched++;
+                    break;
                 }
             }
-            if (hited > 0)
+            if (matched > 0)
             {
-                line->x0 = x;
+                line->x0 = leftx;
                 break;
             }
         }
-        for (size_t x = input->width - 1; x > 0; x--)
+        for (size_t rightx = input->width - 1; rightx > 0; rightx--)
         {
-            hited = 0;
+            int matched = 0;
             for (int i = 1; i <= scanMax; i++)
             {
-                int val = input->data[y * input->width + x] - input->data[y * input->width + x - 1];
+                int val = input->data[y * input->stride + rightx] - input->data[y * input->stride + rightx - 1];
                 if (abs(val) > valThreshold)
                 {
-                    hited++;
+                    matched++;
                 }
             }
-            if (hited > 0)
+            if (matched > 0)
             {
-                line->x1 = x;
+                line->x1 = rightx;
                 break;
             }
         }
-        lines.push_back(line);
+        int lw = line->x1 - line->x0;
+        if (lw < input->width / 5)
+        {
+            delete line;
+            continue;
+        }
+        lines[y] = line;
     }
-    for (std::list<FPDF_Line *>::iterator it = lines.begin(); it != lines.end(); it++)
+    int avgc0 = 0, avgc1 = 0;
+    size_t avgx0 = 0, avgx1 = 0;
+    std::map<size_t, int> avgcs0, avgcs1;
+    for (std::map<size_t, FPDF_Line *>::iterator it = lines.begin(); it != lines.end(); it++)
     {
-        FPDF_Line *line = *it;
-        FPDFBitmap_FillRect(bitmap, line->x0, line->y0, line->x1 - line->x0, 1, 0x0000FFFF);
+        FPDF_Line *line = it->second;
+        avgcs0[line->x0 / 5]++;
+        if (avgcs0[line->x0 / 5] > avgc0)
+        {
+            avgc0 = avgcs0[line->x0 / 5];
+            avgx0 = line->x0 / 5;
+        }
+        avgcs1[line->x1 / 5]++;
+        if (avgcs1[line->x1 / 5] > avgc1)
+        {
+            avgc1 = avgcs1[line->x1 / 5];
+            avgx1 = line->x1 / 5;
+        }
     }
+    avgx0 = avgx0 * 5 - input->width / 100;
+    avgx1 = avgx1 * 5 + input->width / 100;
+    FPDF_Line *top = 0, *bottom = 0;
+    int xxxc = 0;
+    for (std::map<size_t, FPDF_Line *>::iterator it = lines.begin(); it != lines.end(); it++)
+    {
+        FPDF_Line *line = it->second;
+        int distx0 = avgx0 - line->x0;
+        int distx1 = line->x1 - avgx1;
+        //
+        if ((distx0 > 10 && line->x1 < input->width / 2) || (distx0 > 10 && line->x0 > input->width / 2))
+        {
+            continue;
+        }
+        if (top == 0 || line->y0 < top->y0)
+        {
+            top = line;
+        }
+        if (bottom == 0 || line->y0 > bottom->y0)
+        {
+            bottom = line;
+        }
+    }
+    // FPDFBitmap_FillRect(bitmap, top->x0, top->y0, top->x1 - top->x0, 100, 0xFF0000FF);
+    // FPDFBitmap_FillRect(bitmap, l0->x0, l0->x1 - 3, 300, 100, 0x111111FF);
+    size_t avgy0 = top->y0, avgy1 = bottom->y0;
+    FPDFBitmap_FillRect(bitmap, avgx0, avgy0, avgx1 - avgx0, 2, 0xAAAAAAFF);
+    FPDFBitmap_FillRect(bitmap, avgx0, avgy0, 2, avgy1 - avgy0, 0xAAAAAAFF);
+    FPDFBitmap_FillRect(bitmap, avgx1, avgy0, 2, avgy1 - avgy0, 0xAAAAAAFF);
+    FPDFBitmap_FillRect(bitmap, avgx0, avgy1, avgx1 - avgx0, 2, 0xAAAAAAFF);
+    // for (std::list<FPDF_Line *>::iterator it = lines.begin(); it != lines.end(); it++)
+    // {
+    //     FPDF_Line *line = *it;
+    //     int distx0 = avgx0 - line->x0;
+    //     int distx1 = line->x1 - avgx1;
+    //     if (distx0 < 5 && distx1 < 5)
+    //     {
+    //         FPDFBitmap_FillRect(bitmap, line->x0, line->y0, line->x1 - line->x0, 1, 0x0000FFFF);
+    //     }
+    //     else
+    //     {
+    //         FPDFBitmap_FillRect(bitmap, line->x0, line->y0, line->x1 - line->x0, 1, 0x00999900);
+    //     }
+    // }
+    // for (std::map<size_t, FPDF_Line *>::iterator it = lines.begin(); it != lines.end(); it++)
+    // {
+    //     FPDF_Line *line = it->second;
+    //     delete line;
+    // }
 }
 
 class ImgGroup

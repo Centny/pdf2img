@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		7EA8B54DCBD370825D2C4C07 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 97DDD9429258AB0569AAD51B /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				79F2755EF22CDA6650AA7E3F /* PBXTargetDependency */,
+				0C3AD1278FF804E6521ACC44 /* PBXTargetDependency */,
+				9392CA54B2D519A7C90F687B /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		70825F97E45174510A3A183E /* pdf2img_cli.cc in Sources */ = {isa = PBXBuildFile; fileRef = 31AF3379735A96D54EC108BC /* pdf2img_cli.cc */; };
+		C728993E135E86E63EA3D021 /* test_main.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DC7FF5968657605A9F5E2 /* test_main.cc */; };
+		D7E92477E1468D981B862E26 /* libpdf2img.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 124060136E7FF71FA6002048 /* libpdf2img.a */; };
+		E5029464469949DA4E588210 /* pdf2img.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5CB65F3E53F997FFC92AC83D /* pdf2img.cc */; };
+		F2F40FB285E96076D942D380 /* pdf2img_test.cc in Sources */ = {isa = PBXBuildFile; fileRef = A9AF897E882C7F4CD0FDBCD1 /* pdf2img_test.cc */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01DF1F055CA4855210252380 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7A4B1F3D69310895AB6D05C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4008AD84601681C6EA3EEA3E;
+			remoteInfo = pdf2img;
+		};
+		4636EF866F823AEAAC5A782F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7A4B1F3D69310895AB6D05C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4008AD84601681C6EA3EEA3E;
+			remoteInfo = pdf2img;
+		};
+		6C43C6EE620FDE11DF21AB97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7A4B1F3D69310895AB6D05C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB81A02411D4FBFFCCF928E4;
+			remoteInfo = pdf2img_cli;
+		};
+		D299777E6E15908CAB707B57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7A4B1F3D69310895AB6D05C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80EB87FA3A1772EF456197FB;
+			remoteInfo = pdf2img.test;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		124060136E7FF71FA6002048 /* libpdf2img.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpdf2img.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AF3379735A96D54EC108BC /* pdf2img_cli.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pdf2img_cli.cc; sourceTree = "<group>"; };
+		3B6503668625E6A63D7D966E /* pdf2img.test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pdf2img.test; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F9DC7FF5968657605A9F5E2 /* test_main.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_main.cc; sourceTree = "<group>"; };
+		5CB65F3E53F997FFC92AC83D /* pdf2img.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pdf2img.cc; sourceTree = "<group>"; };
+		756B3F829248879D4C4A2C44 /* pdf2img_cli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pdf2img_cli; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9AF897E882C7F4CD0FDBCD1 /* pdf2img_test.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pdf2img_test.cc; sourceTree = "<group>"; };
+		B1E11E853B1B1CA4BD7FE12A /* pdf2img.gyp */ = {isa = PBXFileReference; explicitFileType = sourcecode; path = pdf2img.gyp; sourceTree = "<group>"; };
+		B32455EC465EA38496C7DC7A /* pdf2img.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pdf2img.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1706CD34DE727C9B6132A957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8717A225B26E682B30316B63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7E92477E1468D981B862E26 /* libpdf2img.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCA7110C49E70837852447D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64B908BBC7AB1261408DFA46 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				B1E11E853B1B1CA4BD7FE12A /* pdf2img.gyp */,
+			);
+			name = Build;
+			sourceTree = "<group>";
+		};
+		66A2C1225DFC8DBDB2DEEE87 = {
+			isa = PBXGroup;
+			children = (
+				9E6A36452A7B11BAE4D487D5 /* Source */,
+				D2F0B5169558394B0B071903 /* Products */,
+				64B908BBC7AB1261408DFA46 /* Build */,
+			);
+			sourceTree = "<group>";
+		};
+		9E6A36452A7B11BAE4D487D5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5CB65F3E53F997FFC92AC83D /* pdf2img.cc */,
+				B32455EC465EA38496C7DC7A /* pdf2img.h */,
+				31AF3379735A96D54EC108BC /* pdf2img_cli.cc */,
+				A9AF897E882C7F4CD0FDBCD1 /* pdf2img_test.cc */,
+				3F9DC7FF5968657605A9F5E2 /* test_main.cc */,
+			);
+			name = Source;
+			path = src;
+			sourceTree = "<group>";
+		};
+		D2F0B5169558394B0B071903 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				124060136E7FF71FA6002048 /* libpdf2img.a */,
+				3B6503668625E6A63D7D966E /* pdf2img.test */,
+				756B3F829248879D4C4A2C44 /* pdf2img_cli */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4008AD84601681C6EA3EEA3E /* pdf2img */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3D8EB526C26B5F1317F68AE /* Build configuration list for PBXNativeTarget "pdf2img" */;
+			buildPhases = (
+				E2089ABFF2C87D280D7B766E /* Sources */,
+				DCA7110C49E70837852447D4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pdf2img;
+			productName = pdf2img;
+			productReference = 124060136E7FF71FA6002048 /* libpdf2img.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		80EB87FA3A1772EF456197FB /* pdf2img.test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADD4C33A8848D2131F876FD1 /* Build configuration list for PBXNativeTarget "pdf2img.test" */;
+			buildPhases = (
+				BDEF0035722EC5F6AA8D4079 /* Sources */,
+				8717A225B26E682B30316B63 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FF65E246E21A51BE9F0EABE /* PBXTargetDependency */,
+			);
+			name = pdf2img.test;
+			productName = pdf2img.test;
+			productReference = 3B6503668625E6A63D7D966E /* pdf2img.test */;
+			productType = "com.apple.product-type.tool";
+		};
+		FB81A02411D4FBFFCCF928E4 /* pdf2img_cli */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89C99FE394D1CDBC8428E04D /* Build configuration list for PBXNativeTarget "pdf2img_cli" */;
+			buildPhases = (
+				872E55A74503193A30D519AE /* Sources */,
+				1706CD34DE727C9B6132A957 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pdf2img_cli;
+			productName = pdf2img_cli;
+			productReference = 756B3F829248879D4C4A2C44 /* pdf2img_cli */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7A4B1F3D69310895AB6D05C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
+			buildConfigurationList = D88B10E6C8612FA153755152 /* Build configuration list for PBXProject "pdf2img" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 66A2C1225DFC8DBDB2DEEE87;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7EA8B54DCBD370825D2C4C07 /* All */,
+				4008AD84601681C6EA3EEA3E /* pdf2img */,
+				80EB87FA3A1772EF456197FB /* pdf2img.test */,
+				FB81A02411D4FBFFCCF928E4 /* pdf2img_cli */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		872E55A74503193A30D519AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70825F97E45174510A3A183E /* pdf2img_cli.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDEF0035722EC5F6AA8D4079 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C728993E135E86E63EA3D021 /* test_main.cc in Sources */,
+				F2F40FB285E96076D942D380 /* pdf2img_test.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2089ABFF2C87D280D7B766E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5029464469949DA4E588210 /* pdf2img.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C3AD1278FF804E6521ACC44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80EB87FA3A1772EF456197FB /* pdf2img.test */;
+			targetProxy = D299777E6E15908CAB707B57 /* PBXContainerItemProxy */;
+		};
+		79F2755EF22CDA6650AA7E3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4008AD84601681C6EA3EEA3E /* pdf2img */;
+			targetProxy = 4636EF866F823AEAAC5A782F /* PBXContainerItemProxy */;
+		};
+		7FF65E246E21A51BE9F0EABE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4008AD84601681C6EA3EEA3E /* pdf2img */;
+			targetProxy = 01DF1F055CA4855210252380 /* PBXContainerItemProxy */;
+		};
+		9392CA54B2D519A7C90F687B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB81A02411D4FBFFCCF928E4 /* pdf2img_cli */;
+			targetProxy = 6C43C6EE620FDE11DF21AB97 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		688965590C8A1AB523DE4E27 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/include,
+					./deps/precompiled/include,
+				);
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-stdlib=libc++",
+					"-framework CoreFoundation",
+					"-framework CoreGraphics",
+					"-L/usr/local/lib",
+					"-L./deps/precompiled/lib",
+					"-Wl,-rpath,.",
+					"",
+					"-lpdfium -ljpeg",
+				);
+				PRODUCT_NAME = pdf2img;
+			};
+			name = Default;
+		};
+		6F1887C0BB8677EE5B168EA4 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INTERMEDIATE_DIR = "$(PROJECT_DERIVED_FILE_DIR)/$(CONFIGURATION)";
+				SHARED_INTERMEDIATE_DIR = "$(SYMROOT)/DerivedSources/$(CONFIGURATION)";
+			};
+			name = Default;
+		};
+		A4C4546E363761DD717DEC8D /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/include,
+					./deps/precompiled/include,
+				);
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-stdlib=libc++",
+					"-lgtest",
+					"-framework CoreFoundation",
+					"-framework CoreGraphics",
+					"-L/usr/local/lib",
+					"-L.",
+					"-L./deps/precompiled/lib",
+					"-Wl,-rpath,.",
+					"",
+					"-lpdfium -ljpeg",
+				);
+				PRODUCT_NAME = pdf2img.test;
+			};
+			name = Default;
+		};
+		CD03D498EA14D924F6304B79 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/include,
+					./deps/precompiled/include,
+				);
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-stdlib=libc++",
+					"-framework CoreFoundation",
+					"-framework CoreGraphics",
+					"-L/usr/local/lib",
+					"-L.",
+					"-L./deps/precompiled/lib",
+					"-Wl,-rpath,.",
+					"",
+					"-lpdfium -ljpeg",
+				);
+				PRODUCT_NAME = pdf2img_cli;
+			};
+			name = Default;
+		};
+		DFDA94D87F49DE2E9C103B42 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = All;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89C99FE394D1CDBC8428E04D /* Build configuration list for PBXNativeTarget "pdf2img_cli" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD03D498EA14D924F6304B79 /* Default */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Default;
+		};
+		97DDD9429258AB0569AAD51B /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFDA94D87F49DE2E9C103B42 /* Default */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Default;
+		};
+		ADD4C33A8848D2131F876FD1 /* Build configuration list for PBXNativeTarget "pdf2img.test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4C4546E363761DD717DEC8D /* Default */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Default;
+		};
+		B3D8EB526C26B5F1317F68AE /* Build configuration list for PBXNativeTarget "pdf2img" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				688965590C8A1AB523DE4E27 /* Default */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Default;
+		};
+		D88B10E6C8612FA153755152 /* Build configuration list for PBXProject "pdf2img" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F1887C0BB8677EE5B168EA4 /* Default */,
+			);
+			defaultConfigurationIsVisible = 1;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A7A4B1F3D69310895AB6D05C /* Project object */;
+}
